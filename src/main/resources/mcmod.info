@@ -1,0 +1,16 @@
+[
+{
+  "modid": "TCWarpOverlay",
+  "name": "Thaumcraft Warp Overlay",
+  "description": "Simple client overlay used to display the amount of warp you have accumulated in Thaumcraft 4.",
+  "version": "${mod_version}",
+  "mcversion": "${minecraft_version}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["mstiles92"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
