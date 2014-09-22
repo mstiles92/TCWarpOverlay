@@ -20,8 +20,26 @@
  * limitations under the license.
  */
 
-package com.mstiles92.tcwarpoverlay.proxy;
+package com.mstiles92.tcwarpoverlay.gui;
 
-public interface IProxy {
-    public void registerOverlayRenderer();
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+
+public class GuiWarpOverlay extends Gui {
+    private Minecraft mc;
+
+    public GuiWarpOverlay() {
+        super();
+
+        mc = Minecraft.getMinecraft();
+    }
+
+    @SubscribeEvent
+    public void onRenderGameOverlay(RenderGameOverlayEvent event) {
+        if (event.type.equals(RenderGameOverlayEvent.ElementType.HOTBAR)) {
+            drawString(mc.fontRenderer, "Hello World!", 2, 2, 0xFFFFFF);
+        }
+    }
 }

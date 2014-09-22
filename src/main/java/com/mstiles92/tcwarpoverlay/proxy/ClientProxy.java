@@ -22,5 +22,12 @@
 
 package com.mstiles92.tcwarpoverlay.proxy;
 
+import com.mstiles92.tcwarpoverlay.gui.GuiWarpOverlay;
+import net.minecraftforge.common.MinecraftForge;
+
 public class ClientProxy extends CommonProxy {
+    @Override
+    public void registerOverlayRenderer() {
+        MinecraftForge.EVENT_BUS.register(new GuiWarpOverlay());
+    }
 }

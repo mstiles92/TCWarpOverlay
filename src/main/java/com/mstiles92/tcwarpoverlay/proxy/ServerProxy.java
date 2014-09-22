@@ -23,4 +23,8 @@
 package com.mstiles92.tcwarpoverlay.proxy;
 
 public class ServerProxy extends CommonProxy {
+    @Override
+    public void registerOverlayRenderer() {
+        // NOOP
+    }
 }
