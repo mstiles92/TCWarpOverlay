@@ -43,17 +43,19 @@ public class GuiWarpOverlay extends Gui {
     public void onRenderGameOverlay(RenderGameOverlayEvent event) {
         if (shouldRender) {
             if (event.type.equals(RenderGameOverlayEvent.ElementType.HOTBAR)) {
-                if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
-                    String playerName = FMLClientHandler.instance().getClientPlayerEntity().getCommandSenderName();
-                    String warpString = "Warp: " + Thaumcraft.proxy.getPlayerKnowledge().getWarp(playerName);
-                    String tempWarpString = "Temporary Warp: " + Thaumcraft.proxy.getPlayerKnowledge().getWarp(playerName);
+                if (FMLClientHandler.instance().getClient().inGameHasFocus) {
+                    if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
+                        String playerName = FMLClientHandler.instance().getClientPlayerEntity().getCommandSenderName();
+                        String warpString = "Warp: " + Thaumcraft.proxy.getPlayerKnowledge().getWarp(playerName);
+                        String tempWarpString = "Temporary Warp: " + Thaumcraft.proxy.getPlayerKnowledge().getWarp(playerName);
 
-                    int textX = 2;
-                    int textY = 2;
-                    int textColor = 0xFFFFFF;
+                        int textX = 2;
+                        int textY = 2;
+                        int textColor = 0xFFFFFF;
 
-                    drawString(mc.fontRenderer, warpString, textX, textY, textColor);
-                    drawString(mc.fontRenderer, tempWarpString, textX, textY + mc.fontRenderer.FONT_HEIGHT + 2, textColor);
+                        drawString(mc.fontRenderer, warpString, textX, textY, textColor);
+                        drawString(mc.fontRenderer, tempWarpString, textX, textY + mc.fontRenderer.FONT_HEIGHT + 2, textColor);
+                    }
                 }
             }
         }
