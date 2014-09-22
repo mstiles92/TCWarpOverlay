@@ -28,6 +28,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 public class GuiWarpOverlay extends Gui {
+    private static boolean shouldRender = false;
     private Minecraft mc;
 
     public GuiWarpOverlay() {
@@ -38,8 +39,14 @@ public class GuiWarpOverlay extends Gui {
 
     @SubscribeEvent
     public void onRenderGameOverlay(RenderGameOverlayEvent event) {
-        if (event.type.equals(RenderGameOverlayEvent.ElementType.HOTBAR)) {
-            drawString(mc.fontRenderer, "Hello World!", 2, 2, 0xFFFFFF);
+        if (shouldRender) {
+            if (event.type.equals(RenderGameOverlayEvent.ElementType.HOTBAR)) {
+                drawString(mc.fontRenderer, "Hello World!", 2, 2, 0xFFFFFF);
+            }
         }
+    }
+
+    public static void toggleOverlay() {
+        shouldRender = !shouldRender;
     }
 }

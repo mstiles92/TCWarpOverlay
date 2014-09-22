@@ -40,11 +40,12 @@ public class TCWarpOverlay {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-
+        proxy.registerKeyBindings();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.registerOverlayRenderer();
+        proxy.registerEventHandlers();
     }
 }

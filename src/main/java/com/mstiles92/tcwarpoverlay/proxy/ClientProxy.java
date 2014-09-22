@@ -23,11 +23,27 @@
 package com.mstiles92.tcwarpoverlay.proxy;
 
 import com.mstiles92.tcwarpoverlay.gui.GuiWarpOverlay;
+import com.mstiles92.tcwarpoverlay.keybindings.KeyBindings;
+import com.mstiles92.tcwarpoverlay.keybindings.KeyInputEventHandler;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
     @Override
     public void registerOverlayRenderer() {
         MinecraftForge.EVENT_BUS.register(new GuiWarpOverlay());
+    }
+
+    @Override
+    public void registerEventHandlers() {
+        super.registerEventHandlers();
+
+        FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
+    }
+
+    @Override
+    public void registerKeyBindings() {
+        ClientRegistry.registerKeyBinding(KeyBindings.toggleWarpOverlay);
     }
 }

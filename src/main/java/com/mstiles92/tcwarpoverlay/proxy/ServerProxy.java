@@ -27,4 +27,9 @@ public class ServerProxy extends CommonProxy {
     public void registerOverlayRenderer() {
         // NOOP
     }
+
+    @Override
+    public void registerKeyBindings() {
+        // NOOP
+    }
 }

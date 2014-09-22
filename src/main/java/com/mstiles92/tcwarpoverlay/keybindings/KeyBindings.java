@@ -20,10 +20,11 @@
  * limitations under the license.
  */
 
-package com.mstiles92.tcwarpoverlay.proxy;
+package com.mstiles92.tcwarpoverlay.keybindings;
 
-public interface IProxy {
-    public void registerOverlayRenderer();
-    public void registerEventHandlers();
-    public void registerKeyBindings();
+import net.minecraft.client.settings.KeyBinding;
+import org.lwjgl.input.Keyboard;
+
+public class KeyBindings {
+    public static KeyBinding toggleWarpOverlay = new KeyBinding("Toggle Warp Overlay", Keyboard.KEY_F10, "Thaumcraft Warp Overlay");
 }

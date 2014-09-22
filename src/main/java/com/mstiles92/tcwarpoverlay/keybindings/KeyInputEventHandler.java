@@ -20,10 +20,24 @@
  * limitations under the license.
  */
 
-package com.mstiles92.tcwarpoverlay.proxy;
+package com.mstiles92.tcwarpoverlay.keybindings;
 
-public interface IProxy {
-    public void registerOverlayRenderer();
-    public void registerEventHandlers();
-    public void registerKeyBindings();
+import com.mstiles92.tcwarpoverlay.gui.GuiWarpOverlay;
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.InputEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+@SideOnly(Side.CLIENT)
+public class KeyInputEventHandler {
+
+    @SubscribeEvent
+    public void handleKeyInput(InputEvent.KeyInputEvent event) {
+        if (FMLClientHandler.instance().getClient().inGameHasFocus) {
+            if (KeyBindings.toggleWarpOverlay.isPressed()) {
+                GuiWarpOverlay.toggleOverlay();
+            }
+        }
+    }
 }
