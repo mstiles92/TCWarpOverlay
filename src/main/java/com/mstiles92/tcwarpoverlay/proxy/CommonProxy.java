@@ -20,31 +20,7 @@
  * limitations under the license.
  */
 
-package com.mstiles92.tcwarpoverlay;
+package com.mstiles92.tcwarpoverlay.proxy;
 
-import com.mstiles92.tcwarpoverlay.proxy.IProxy;
-import com.mstiles92.tcwarpoverlay.reference.Reference;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = Reference.DEPENDENCIES)
-public class TCWarpOverlay {
-
-    @Mod.Instance(Reference.MOD_ID)
-    public static TCWarpOverlay instance;
-
-    @SidedProxy(modId = Reference.MOD_ID, clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
-    public static IProxy proxy;
-
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-
-    }
-
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-
-    }
+public class CommonProxy implements IProxy {
 }
