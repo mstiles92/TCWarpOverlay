@@ -28,6 +28,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.lib.research.PlayerKnowledge;
 
 public class GuiWarpOverlay extends Gui {
     private static boolean shouldRender = false;
@@ -46,15 +47,21 @@ public class GuiWarpOverlay extends Gui {
                 if (FMLClientHandler.instance().getClient().inGameHasFocus) {
                     if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
                         String playerName = FMLClientHandler.instance().getClientPlayerEntity().getCommandSenderName();
-                        String warpString = "Warp: " + Thaumcraft.proxy.getPlayerKnowledge().getWarp(playerName);
-                        String tempWarpString = "Temporary Warp: " + Thaumcraft.proxy.getPlayerKnowledge().getWarp(playerName);
+                        PlayerKnowledge playerKnowledge = Thaumcraft.proxy.getPlayerKnowledge();
+
+                        String permanentWarpString = "Permanent Warp: " + playerKnowledge.getWarpPerm(playerName);
+                        String stickyWarpString = "Sticky Warp: " + playerKnowledge.getWarpSticky(playerName);
+                        String tempWarpString = "Temporary Warp: " + playerKnowledge.getWarpTemp(playerName);
+                        String totalWarpString = "Total Warp: " + playerKnowledge.getWarpTotal(playerName);
 
                         int textX = 2;
                         int textY = 2;
                         int textColor = 0xFFFFFF;
 
-                        drawString(mc.fontRenderer, warpString, textX, textY, textColor);
-                        drawString(mc.fontRenderer, tempWarpString, textX, textY + mc.fontRenderer.FONT_HEIGHT + 2, textColor);
+                        drawString(mc.fontRenderer, permanentWarpString, textX, textY, textColor);
+                        drawString(mc.fontRenderer, stickyWarpString, textX, textY + mc.fontRenderer.FONT_HEIGHT + 2, textColor);
+                        drawString(mc.fontRenderer, tempWarpString, textX, textY + 2 * (mc.fontRenderer.FONT_HEIGHT + 2), textColor);
+                        drawString(mc.fontRenderer, totalWarpString, textX, textY + 3 * (mc.fontRenderer.FONT_HEIGHT + 2), textColor);
                     }
                 }
             }

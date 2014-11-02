@@ -1,6 +1,7 @@
 /.gradle
 /api
 /build
+/eclipse
 /run
 /.idea
 /*.iml
